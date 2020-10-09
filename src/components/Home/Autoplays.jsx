@@ -36,20 +36,39 @@ function Autoplays() {
     }
 
     return (
+        <div className="autolays">
+            <Swiper
+                {...params}
+                id="main"
+                tag="section"
+                wrapperTag="ul"
+                loop={true}
+                navigation
+                pagination
+                slidesPerView={1}
+            >
 
-        <Swiper
-            {...params}
-            id="main"
-            tag="section"
-            wrapperTag="ul"
-            loop={true}
-            navigation
-            pagination
-            slidesPerView={1}
-        >
-
-            {slides}
-        </Swiper>
+                {slides}
+            </Swiper>
+            <div className="auto__content">
+                <div className="auto__contentQuality">
+                    <img src="https://cafe.net.vn/static/version1595910385/frontend/Trungnguyen/default/vi_VN/images/espresso-pot-glass-coffee-bottle.png" alt="" />
+                    <span>Chất lượng cà phê đạt chuẩn toàn cầu</span>
+                </div>
+                <div className="auto__contentQuality">
+                    <img src="https://cafe.net.vn/static/version1595910385/frontend/Trungnguyen/default/vi_VN/images/van-truck-delivery-fast-service.png" alt="" />
+                    <span>Giao hàng toàn quốc bảo đảm</span>
+                </div>
+                <div className="auto__contentQuality">
+                    <img src="https://cafe.net.vn/static/version1595910385/frontend/Trungnguyen/default/vi_VN/images/shield-protection-guard-insurance-money.png" alt="" />
+                    <span>Thanh toán an toàn tuyệt đối</span>
+                </div>
+                <div className="auto__contentQuality">
+                    <img src="https://cafe.net.vn/static/version1595910385/frontend/Trungnguyen/default/vi_VN/images/handshake-collaboration-partnership.png" alt="" />
+                    <span>Giá tốt dành cho đối tác mua số lượng lớn</span>
+                </div>
+            </div>
+        </div>
     );
 }
 export default Autoplays;
