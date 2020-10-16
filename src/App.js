@@ -1,4 +1,5 @@
 
+import firebase, { auth } from 'firebase';
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
@@ -7,30 +8,30 @@ import Header from './components/header/Header';
 import Home from './components/Home/Home';
 import { useStateValue } from './components/Home/StateProvider';
 import Login from './components/Login/Login';
-import { auth } from 'firebase';
 
 function App() {
   const [{ user }, dispatch] = useStateValue();
 
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((authUser) => {
-      if (authUser) {
-        // User is signed in.
-        dispatch({
-          type: 'SET_USER',
-          user: authUser,
-        })
-      } else {
-        dispatch({
-          type: 'SET_USER',
-          user: null,
-        });
-      }
-    });
-    return () => {
-      unsubscribe();
-    }
-  }, []);
+  // useEffect(() => {
+  //   auth.onAuthStateChanged(authUser => {
+  //     console.slog('THE USER IS >>>', authUser);
+  //     //   if (authUser) {
+  //     //     // User is signed in.
+  //     //     dispatch({
+  //     //       type: 'SET_USER',
+  //     //       user: authUser,
+  //     //     })
+  //     //   } else {
+  //     //     dispatch({
+  //     //       type: 'SET_USER',
+  //     //       user: null,
+  //     //     });
+  //     //   }
+  //     // });
+  //     // return () => {
+  //     //   unsubscribe();
+  //   })
+  // }, []);
   return (
     <Router>
       <div className="app">

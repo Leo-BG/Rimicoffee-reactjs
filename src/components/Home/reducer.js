@@ -1,23 +1,23 @@
 export const initialState = {
     cart: [{
-            id: "12213",
-            image: "https://cafe.net.vn/media/catalog/product/cache/2a6aec2d01a0d2ad56a66dbbd17cfbf5/6/0/6002302.jpg",
-            title: "Máy pha cafe tự động Scott Slimissimo",
-            price: 19190000,
-            rating: 4,
-        },
-        {
-            id: "22221",
-            image: "https://cafe.net.vn/media/catalog/product/cache/2a6aec2d01a0d2ad56a66dbbd17cfbf5/6/0/6002302.jpg",
-            title: "Máy pha cafe tự động Scott Slimissimo",
-            price: 19190000,
-            rating: 4,
-        },
+        id: "12213",
+        image: "https://cafe.net.vn/media/catalog/product/cache/2a6aec2d01a0d2ad56a66dbbd17cfbf5/6/0/6002302.jpg",
+        title: "Máy pha cafe tự động Scott Slimissimo",
+        price: 19190000,
+        rating: 4,
+    },
+    {
+        id: "22221",
+        image: "https://cafe.net.vn/media/catalog/product/cache/2a6aec2d01a0d2ad56a66dbbd17cfbf5/6/0/6002302.jpg",
+        title: "Máy pha cafe tự động Scott Slimissimo",
+        price: 19190000,
+        rating: 4,
+    },
     ],
     user: null,
 };
 export const getCartToTal = (cart) =>
-    cart.reduce((amount, item) => item.price + amount, 0);
+    cart?.reduce((amount, item) => item.price + amount, 0);
 
 function reducer(state, action) {
     console.log(action);
@@ -53,7 +53,8 @@ function reducer(state, action) {
             }
 
 
-            return {...state,
+            return {
+                ...state,
                 cart: newCart,
             };
         default:
