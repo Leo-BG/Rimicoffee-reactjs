@@ -1,12 +1,19 @@
 import { Phone, Search, ShoppingCart } from '@material-ui/icons';
+
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { auth } from '../../firebase';
 import { useStateValue } from '../Home/StateProvider';
 import "./Header.css";
 import logo from "./logo.png";
 
 function Header() {
-    const [{ cart }] = useStateValue();
+    const [{ cart, user }, dispatch] = useStateValue();
+    const handleAuthentication = () => {
+        if (user) {
+            auth.signOut()
+        }
+    }
     return (
         <nav className="header">
             <Link to="/">
@@ -21,11 +28,16 @@ function Header() {
             </div>
             {/*  3 links*/}
             <div className="header___nav">
-                <Link to="/login" className="header__link">
-                    <div className="header__option">
-                        <span className="header__optionLine">Đăng nhập</span>
+
+
+                <Link to={!user && '/login'} className="header__link">
+                    <div onClick={handleAuthentication} className="header__option">
+                        <span className="header__optionLine">{user ? 'Đăng xuất' : "Đăng nhập"}</span>
                     </div>
                 </Link>
+
+
+
                 <Link to="/" className="header__link">
                     <div className="header__option">
                         <span className="header__optionLine">Đối tác</span>
@@ -46,7 +58,7 @@ function Header() {
                 </Link>
             </div>
             {/* Cart icon with number */}
-        </nav>
+        </nav >
     )
 }
 

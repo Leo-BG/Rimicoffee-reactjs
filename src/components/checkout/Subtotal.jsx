@@ -26,7 +26,7 @@ function Subtotal() {
                 thousandSeparator={true}
                 suffix={"đ"}
             />
-            <button>Process checkour</button>
+            <button>Thanh toán</button>
         </div>
     )
 }
